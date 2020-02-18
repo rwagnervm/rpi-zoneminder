@@ -22,13 +22,13 @@ RUN sed -i s/'collation-server      = utf8mb4_general_ci'/'collation-server = la
 # Install and configure Zoneminder
 RUN echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get -t stretch-backports install zoneminder=1.30.4*
+RUN apt-get  -t stretch-backports install zoneminder=1.30.4*
 RUN chmod 740 /etc/zm/zm.conf
 RUN chown root:www-data /etc/zm/zm.conf
 RUN chown -R www-data:www-data /usr/share/zoneminder/
 
 # Install and configure Apache2/PHP
-RUN apt install  --allow-unauthenticated php php-mysql apache2-mod-php7.0 php7.0-gd apache2 cakephp libav-tools ssmtp mailutils php-curl php-gd php7.0-apcu wget unzip -y
+RUN apt install --allow-unauthenticated php php-mysql apache2-mod-php7.0 php7.0-gd apache2 cakephp libav-tools ssmtp mailutils php-curl php-gd php7.0-apcu wget unzip -y
 RUN adduser www-data video
 RUN a2enmod cgi
 RUN a2enmod rewrite
