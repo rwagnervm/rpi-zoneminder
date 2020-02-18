@@ -8,7 +8,7 @@ ENV SHMEM="90%"
 COPY defaults/ /root/
 
 # Update container
-RUN apt-get update && \
+RUN apt-get update --allow-unauthenticated && \
     apt-get upgrade -y && \
     apt-get dist-upgrade -y
 
