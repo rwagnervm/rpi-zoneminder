@@ -22,7 +22,7 @@ RUN sed -i s/'collation-server      = utf8mb4_general_ci'/'collation-server = la
 # Install and configure Zoneminder
 RUN echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get  -t stretch-backports install zoneminder=1.30.4*
+RUN apt-get --allow-unauthenticated -t stretch-backports install zoneminder=1.30.4*
 RUN chmod 740 /etc/zm/zm.conf
 RUN chown root:www-data /etc/zm/zm.conf
 RUN chown -R www-data:www-data /usr/share/zoneminder/
