@@ -28,7 +28,7 @@ RUN chown root:www-data /etc/zm/zm.conf
 RUN chown -R www-data:www-data /usr/share/zoneminder/
 
 # Install and configure Apache2/PHP
-RUN apt install php php-mysql apache2-mod-php7.0 php7.0-gd apache2 cakephp libav-tools ssmtp mailutils php-curl php-gd -y
+RUN apt install php php-mysql apache2-mod-php7.0 php7.0-gd apache2 cakephp libav-tools ssmtp mailutils php-curl php-gd php7.0-apcu wget unzip -y
 RUN adduser www-data video
 RUN a2enmod cgi
 RUN a2enmod rewrite
@@ -36,6 +36,12 @@ RUN a2enconf zoneminder
 RUN a2dismod mpm_event
 RUN a2enmod mpm_prefork
 RUN a2enmod php7.0
+
+RUN mkdir -p /usr/share/zoneminder/www/api/app/Plugin
+RUN wget -P /tmp/ https://github.com/FriendsOfCake/crud/archive/c3976f1478c681b0bbc132ec3a3e82c3984eeed5.zip
+RUN cd /usr/share/zoneminder/www/api/app/Plugin
+RUN unzip /tmp/c3976f1478c681b0bbc132ec3a3e82c3984eeed5.zip
+RUN mv crud-c3976f1478c681b0bbc132ec3a3e82c3984eeed5 Crud
 
 # Expose volumes
 VOLUME ["/config"]
