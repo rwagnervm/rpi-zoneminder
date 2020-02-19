@@ -39,7 +39,7 @@ RUN a2enmod php7.0
 
 RUN mkdir -p /usr/share/zoneminder/www/api/app/Plugin
 RUN wget -P /tmp/ https://github.com/FriendsOfCake/crud/archive/c3976f1478c681b0bbc132ec3a3e82c3984eeed5.zip
-RUN cd /usr/share/zoneminder/www/api/app/Plugin
+WORKDIR /usr/share/zoneminder/www/api/app/Plugin
 RUN unzip /tmp/c3976f1478c681b0bbc132ec3a3e82c3984eeed5.zip
 RUN mv crud-c3976f1478c681b0bbc132ec3a3e82c3984eeed5 Crud
 
