@@ -46,6 +46,7 @@ RUN mv crud-c3976f1478c681b0bbc132ec3a3e82c3984eeed5 Crud
 # Expose volumes
 VOLUME ["/config"]
 VOLUME ["/var/cache/zoneminder"]
+VOLUME ["/usr/share/zoneminder"]
 
 # Expose ports
 EXPOSE 80
